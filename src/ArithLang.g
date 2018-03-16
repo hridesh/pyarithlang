@@ -45,10 +45,10 @@ program returns [Program ast] :
  exp returns [Exp ast]: 
 	n=numexp {$ast = $n.ast; }
        | a=addexp {$ast = $a.ast; }
-//        | s=subexp {$ast = $s.ast; }
-//        | m=multexp {$ast = $m.ast; }
-//        | d=divexp {$ast = $d.ast; }
-        ;
+       | s=subexp {$ast = $s.ast; }
+       | m=multexp {$ast = $m.ast; }
+       | d=divexp {$ast = $d.ast; }
+       ;
 
 
 // The following is another example of a production rule in its simplified form.

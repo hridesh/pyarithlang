@@ -94,11 +94,11 @@ class Visitor(ABC):
     def visitAddExp(self, addexp):
         pass
     @abstractmethod
-    def visitSubExp(self, addexp):
+    def visitSubExp(self, subexp):
         pass
     @abstractmethod
-    def visitMultExp(self, addexp):
+    def visitMultExp(self, multexp):
         pass
     @abstractmethod
-    def visitDivExp(self, addexp):
+    def visitDivExp(self, divexp):
         pass

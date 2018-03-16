@@ -45,6 +45,7 @@ class Evaluator(Visitor):
         return NumVal(result)
     
     def visitMultExp(self, mulexp):
+        print("In visitMultExp")
         operands = mulexp.all()
         result = 1.0
         for operand in operands:
