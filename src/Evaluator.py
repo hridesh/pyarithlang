@@ -1,5 +1,8 @@
 '''
-Created on Feb 13, 2018
+This class implements the semantics of this small programming language.
+It does so by providing the semantics of each expression (and declaration)
+in the language. The semantics of each expression is given by defining how 
+the expression is evaluated to a value.
 
 @author: hridesh
 '''
@@ -12,8 +15,55 @@ class Evaluator(Visitor):
         return self.visitProgram(program)
 
     def visitProgram(self, program):
-        print(program.e())
         return program.e().accept(self)
 
     def visitNumExp(self, numexp):
-        return NumVal(numexp.v())
+        return NumVal(numexp.val)
+    
+    def visitAddExp(self, addexp):
+        operands = addexp.all()
+        result = 0.0
+        for operand in operands:
+            opval = operand.accept(self)
+            if type(opval) is NumVal:
+                result += opval.val;
+            else:
+                topval = type(opval)
+                raise ValueError("Expected NumVal found:" + str(topval))    
+        return NumVal(result)
+    
+    def visitSubExp(self, subexp):
+        operands = subexp.all()
+        result = 0.0
+        for operand in operands:
+            opval = operand.accept(self)
+            if type(opval) is NumVal:
+                result += opval.val;
+            else:
+                topval = type(opval)
+                raise ValueError("Expected NumVal found:" + str(topval))    
+        return NumVal(result)
+    
+    def visitMultExp(self, mulexp):
+        operands = mulexp.all()
+        result = 1.0
+        for operand in operands:
+            opval = operand.accept(self)
+            if type(opval) is NumVal:
+                result *= opval.val;
+            else:
+                topval = type(opval)
+                raise ValueError("Expected NumVal found:" + str(topval))    
+        return NumVal(result)
+    
+    def visitDivExp(self, divexp):
+        operands = divexp.all()
+        result = 0.0
+        for operand in operands:
+            opval = operand.accept(self)
+            if type(opval) is NumVal:
+                result += opval.val;
+            else:
+                topval = type(opval)
+                raise ValueError("Expected NumVal found:" + str(topval))    
+        return NumVal(result)

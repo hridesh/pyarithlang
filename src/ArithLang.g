@@ -43,8 +43,8 @@ program returns [Program ast] :
 // The rule above in its full form, where actions are enclosed in { }
 //
  exp returns [Exp ast]: 
-		n=numexp {$ast = $n.ast; }
-//        | a=addexp {$ast = $a.ast; }
+	n=numexp {$ast = $n.ast; }
+       | a=addexp {$ast = $a.ast; }
 //        | s=subexp {$ast = $s.ast; }
 //        | m=multexp {$ast = $m.ast; }
 //        | d=divexp {$ast = $d.ast; }
@@ -67,7 +67,63 @@ program returns [Program ast] :
   		| n0=Number Dot n1=Number {$ast = AST.NumExp(float($n0.text+"."+$n1.text)); }
   		| '-' n0=Number Dot n1=Number {$ast = AST.NumExp(float("-" + $n0.text+"."+$n1.text)); }
   		;		
-
+//
+// The variable access syntax $n0.text is ANTLR's syntax for obtaining the string
+// that is parsed by the rule named n0.
+//
+  
+// The following is another example of a production rule in its simplified form.
+// addexp :
+//        `('  '+'  
+//             exp 
+//             ( exp )+ 
+//         ')' 
+//        ; 
+//
+// The rule above in its full form, where actions are enclosed in { }
+// 
+ addexp returns [AddExp ast]
+        locals [list]
+ 		@init {$list = [] } :
+ 		'(' '+'
+ 		    e=exp {$list.append($e.ast) } 
+ 		    ( e=exp {$list.append($e.ast) } )+
+ 		')' {$ast = AST.AddExp($list)}
+ 		;
+//
+// In the action above, "locals" clause declares variables that will be available
+// throughout that production rule, "@init" clause indicates action that will be 
+// run before we start parsing this production rule. In summary, this rule creates
+// a list before it runs (list), adds expressions to the list as it parses them,
+// and finally creates an AddExp object using those collected expressions. 
+// 
+ 
+subexp returns [SubExp ast]  
+        locals [list]
+ 		@init {$list = [] } :
+ 		'(' '-'
+ 		    e=exp {$list.append($e.ast) } 
+ 		    ( e=exp {$list.append($e.ast) } )+ 
+ 		')' {$ast = AST.SubExp($list) }
+ 		;
+ 
+ multexp returns [MultExp ast] 
+        locals [list]
+ 		@init {$list = [] } :
+ 		'(' '*'
+ 		    e=exp {$list.append($e.ast) } 
+ 		    ( e=exp {$list.append($e.ast) } )+ 
+ 		')' {$ast = AST.MultExp($list) }
+ 		;
+ 
+ divexp returns [DivExp ast] 
+        locals [list]
+ 		@init {$list = [] } :
+ 		'(' '/'
+ 		    e=exp {$list.append($e.ast) } 
+ 		    ( e=exp {$list.append($e.ast) } )+ 
+ 		')' {$ast = AST.DivExp($list) }
+ 		;
 
  // Lexical Specification of this Programming Language
  //  - lexical specification rules start with uppercase

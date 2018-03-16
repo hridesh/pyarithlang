@@ -15,7 +15,7 @@ class Reader:
         parser = ArithLangParser(stream)
         pgm = parser.program()
         print(pgm.toStringTree(recog=parser))
-        return pgm
+        return pgm.ast
     
 if __name__ == '__main__':
     Reader().read()
