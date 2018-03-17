@@ -31,22 +31,22 @@ class Printer:
             result = "(+ "
             for operand in addexp.all():
                 result += operand.accept(self) + " "
-            return result + ")"
+            return result.rstrip() + ")"
 
         def visitSubExp(self, subexp):
             result = "(- "
             for operand in subexp.all():
                 result += operand.accept(self) + " "
-            return result + ")"
+            return result.rstrip() + ")"
 
         def visitMultExp(self, multexp):
             result = "(* "
             for operand in multexp.all():
                 result += operand.accept(self) + " "
-            return result + ")"
+            return result.rstrip() + ")"
 
         def visitDivExp(self, divexp):
             result = "(/ "
             for operand in divexp.all():
                 result += operand.accept(self) + " "
-            return result + ")"
+            return result.rstrip() + ")"
