@@ -3,7 +3,7 @@ This class hierarchy represents expressions in the abstract syntax tree
 manipulated by this interpreter.
  
 @author: Hridesh Rajan
-Copyright (c) 2018, All rights reserved.
+Copyright (c) 2018. All rights reserved.
 See LICENSE file in the root directory for licensing information.
 '''
 from abc import ABC, abstractmethod

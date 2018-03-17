@@ -5,7 +5,7 @@ formatter. The formatter extends the AST visitor
 and provides implementation for each case of visit.
 
 @author: Hridesh Rajan
-Copyright (c) 2018, All rights reserved.
+Copyright (c) 2018. All rights reserved.
 See LICENSE file in the root directory for licensing information.
 '''
 from AST import Visitor

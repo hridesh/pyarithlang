@@ -3,7 +3,7 @@ This module implements the Read-Eval-Print-Loop of the interpreter with
 the help of Reader, Evaluator, and Printer modules. 
 
 @author: Hridesh Rajan
-Copyright (c) 2018, All rights reserved.
+Copyright (c) 2018. All rights reserved.
 See LICENSE file in the root directory for licensing information.
 '''
 import sys

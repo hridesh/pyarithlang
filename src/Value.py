@@ -2,12 +2,16 @@
 This class hierarchy represents the set of program values produced by
 this interpreter.
  
-@author hridesh
+@author: Hridesh Rajan
+Copyright (c) 2018. All rights reserved.
+See LICENSE file in the root directory for licensing information.
 '''
+from abc import ABC, abstractmethod
 
-class Value:
+class Value(ABC):
+    @abstractmethod
     def __str__(self):
-        return "value"
+        pass
 
 class NumVal(Value):
     val = 0.0

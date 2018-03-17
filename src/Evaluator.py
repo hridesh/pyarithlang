@@ -5,7 +5,7 @@ in the language. The semantics of each expression is given by defining how
 the expression is evaluated to a value.
 
 @author: Hridesh Rajan
-Copyright (c) 2018, All rights reserved.
+Copyright (c) 2018. All rights reserved.
 See LICENSE file in the root directory for licensing information.
 '''
 
