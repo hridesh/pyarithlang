@@ -34,15 +34,21 @@ class Evaluator(Visitor):
     
     def visitSubExp(self, subexp):
         operands = subexp.all()
-        result = 0.0
-        for operand in operands:
-            opval = operand.accept(self)
-            if type(opval) is NumVal:
-                result += opval.val;
-            else:
-                topval = type(opval)
-                raise ValueError("Expected NumVal found:" + str(topval))    
-        return NumVal(result)
+        fstoperand = operands.pop(0)
+        fstopval = fstoperand.accept(self)
+        if type(fstopval) is NumVal:
+            result = fstopval.val;
+            for operand in operands:
+                opval = operand.accept(self)
+                if type(opval) is NumVal:
+                    result -= opval.val;
+                else:
+                    topval = type(opval)
+                    raise ValueError("Expected NumVal found:" + str(topval))    
+            return NumVal(result)
+        else:
+            fstopval = type(fstopval)
+            raise ValueError("Expected NumVal found:" + str(fstopval))    
     
     def visitMultExp(self, mulexp):
         print("In visitMultExp")
@@ -59,12 +65,25 @@ class Evaluator(Visitor):
     
     def visitDivExp(self, divexp):
         operands = divexp.all()
-        result = 0.0
-        for operand in operands:
-            opval = operand.accept(self)
-            if type(opval) is NumVal:
-                result += opval.val;
-            else:
-                topval = type(opval)
-                raise ValueError("Expected NumVal found:" + str(topval))    
-        return NumVal(result)
+        fstoperand = operands.pop(0)
+        fstopval = fstoperand.accept(self)
+        if type(fstopval) is NumVal:
+            result = fstopval.val;
+            for operand in operands:
+                opval = operand.accept(self)
+                if type(opval) is NumVal:
+                    result /= opval.val;
+                else:
+                    topval = type(opval)
+                    raise ValueError("Expected NumVal found:" + str(topval))    
+            return NumVal(result)
+        else:
+            fstopval = type(fstopval)
+            raise ValueError("Expected NumVal found:" + str(fstopval))    
+    
+    def checkNumVal(self, val):
+        if type(val) is NumVal:
+            return val
+        else:
+            tyval = type(val)
+            raise ValueError("Expected NumVal found:" + str(tyval))    
