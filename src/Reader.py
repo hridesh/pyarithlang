@@ -14,7 +14,8 @@ class Reader:
         stream = CommonTokenStream(lexer)
         parser = ArithLangParser(stream)
         pgm = parser.program()
-        print(pgm.toStringTree(recog=parser))
+        # Uncomment the following line to print the parse tree.
+        # print(pgm.toStringTree(recog=parser))
         return pgm.ast
     
 if __name__ == '__main__':

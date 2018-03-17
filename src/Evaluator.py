@@ -51,7 +51,6 @@ class Evaluator(Visitor):
             raise ValueError("Expected NumVal found:" + str(fstopval))    
     
     def visitMultExp(self, mulexp):
-        print("In visitMultExp")
         operands = mulexp.all()
         result = 1.0
         for operand in operands:

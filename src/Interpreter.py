@@ -15,6 +15,7 @@ def main(argv):
     ev = Evaluator()
     pr = Printer()
     program = rd.read(argv[1])
+    pr.prnt(program)
     value = ev.eval(program)
     pr.prnt(value)
 
