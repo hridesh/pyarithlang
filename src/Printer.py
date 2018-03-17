@@ -1,7 +1,12 @@
 '''
-Created on Feb 13, 2018
+This class implements a printer for AST nodes in 
+this programming language that makes use of the 
+formatter. The formatter extends the AST visitor
+and provides implementation for each case of visit.
 
-@author: hridesh
+@author: Hridesh Rajan
+Copyright (c) 2018, All rights reserved.
+See LICENSE file in the root directory for licensing information.
 '''
 from AST import Visitor
 from AST import AST

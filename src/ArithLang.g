@@ -1,12 +1,17 @@
-grammar ArithLang;            // Define a grammar called Hello
+// Grammar of this Programming Language
+//  - grammar rules start with lowercase
+//  - this is a comment. 
+//
+// @author: Hridesh Rajan
+// Copyright (c) 2018, All rights reserved.
+// See LICENSE file in the root directory for licensing information.
+
+grammar ArithLang;            // Define a grammar called ArithLang
 
 @header {
 from AST import *
 }
 
-// Grammar of this Programming Language
-//  - grammar rules start with lowercase
-//  - this is a comment. 
  
 // This is an example of a production rule in its simplified form.
 // program : exp ; 

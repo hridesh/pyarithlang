@@ -1,7 +1,10 @@
 '''
-Created on Feb 13, 2018
+This module implements the Read-Eval-Print-Loop of the interpreter with
+the help of Reader, Evaluator, and Printer modules. 
 
-@author: hridesh
+@author: Hridesh Rajan
+Copyright (c) 2018, All rights reserved.
+See LICENSE file in the root directory for licensing information.
 '''
 import sys
 
@@ -23,8 +26,3 @@ def main(argv):
 if __name__ == '__main__':
     main(sys.argv)
     
-    
-    
-#    print "Type a program to evaluate and press the enter key," + \
-#        " e.g. ((lambda (av bv cv) (let ((a av) (b bv) (c cv) (d 279) (e 277)) (+ (* a b) (/ c (- d e))))) 3 100 84) \n" + \
-#        "Type (quit) to exit."

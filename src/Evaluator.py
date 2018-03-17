@@ -4,7 +4,9 @@ It does so by providing the semantics of each expression (and declaration)
 in the language. The semantics of each expression is given by defining how 
 the expression is evaluated to a value.
 
-@author: hridesh
+@author: Hridesh Rajan
+Copyright (c) 2018, All rights reserved.
+See LICENSE file in the root directory for licensing information.
 '''
 
 from AST import Visitor
